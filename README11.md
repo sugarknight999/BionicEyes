@@ -21,11 +21,11 @@
 |仿生鹰眼I   |evo_be_EEDevice_*             | libevo_be_EEDevice_shared_*.so|
 |三轴平台    |evo_be_Device_ThreeAxis_*     | libevo_be_Device_ThreeAxis_shared_*.so|
 
-**注：直连PC除运行上述设备程序外，还需要在另一个终端运行 *evo_be_Device_Service_\** 用于启动仿生眼服务后，才能供远端PC检测到仿生眼系列设备的存在。**  
-***\*代表对应系统平台，例如1804代表ubuntu18.04***
+**注：直连 PC 除运行上述设备程序外，还需要在另一个终端运行 *evo_be_Device_Service_\** 用于启动仿生眼服务后，才能供远端 PC 检测到仿生眼系列设备的存在。**  
+***\*代表对应系统平台，例如 1804 代表 ubuntu18.04***
 
 ### 2.2 获取设备列表程序
-直连PC开启仿生眼服务后，***与直连PC处于同一个局域网下的***远程 *PC* 设备即可检测到仿生眼存在并进行连接，在远程 *PC* 设备中进行如下操作：
+直连 PC 开启仿生眼服务后，***与直连 PC 处于同一个局域网下的***远程 *PC* 设备即可检测到仿生眼存在并进行连接，在远程 *PC* 设备中进行如下操作：
 #### 2.2.1 进入bin目录
  `cd  path_to_workspace/BionicEyes/bin/`
  
@@ -44,7 +44,7 @@
 
 
 ## 3 BE_Sample_SV_VOR
-***evo_be*** 为本案例所使用的函数变量所在的命名空间。
+***evo_be*** 为本案例所使用的函数变量所在的命名空间。  
 首先定义一个静态全局变量的结构体指针 * *be_keypress_dpy*，其中 *Display* 是通过 *typedef struct _XDisplay Display* 定义的结构体 *_XDisplay* 的别名。*XOpenDisplay* 函数是 *Xlib* 库（*X*库）中的一个函数，它允许应用程序与*X*服务器建立连接，并返回一个指向 *Display* 结构的指针。
 ```C++
 	static Display *be_keypress_dpy = XOpenDisplay(NULL);
