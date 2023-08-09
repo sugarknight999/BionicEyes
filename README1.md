@@ -20,11 +20,11 @@
 |仿生鹰眼I   |evo_be_EEDevice_*             | libevo_be_EEDevice_shared_*.so|
 |三轴平台    |evo_be_Device_ThreeAxis_*     | libevo_be_Device_ThreeAxis_shared_*.so|
 
-**注：直连PC除运行上述设备程序外，还需要在另一个终端运行 *evo_be_Device_Service_\** 用于启动仿生眼服务后，才能供远端PC检测到仿生眼系列设备的存在。**
-***\*代表对应系统平台，例如1804代表ubuntu18.04***
+**注：直连 PC 除运行上述设备程序外，还需要在另一个终端运行 *evo_be_Device_Service_\** 用于启动仿生眼服务后，才能供远端 PC 检测到仿生眼系列设备的存在。**
+***\*代表对应系统平台，例如 1804 代表 ubuntu18.04***
 
 ### 2.2 运行远程程序
-直连PC开启仿生眼服务后，***与直连PC处于同一个局域网下的***远程 *PC* 设备即可检测到仿生眼存在并进行连接，在远程 *PC* 设备中进行如下操作：
+直连PC开启仿生眼服务后，***与直连 PC 处于同一个局域网下的***远程 *PC* 设备即可检测到仿生眼存在并进行连接，在远程 *PC* 设备中进行如下操作：
 #### 2.2.1 进入bin目录
  `cd  path_to_workspace/BionicEyes/bin/`
 #### 2.2.2 运行可执行文件
@@ -43,7 +43,7 @@
 >[2023-08-02 10:41:24.841] [BE_Console] [info] BionicEyes: <<goInitPosition>> Motor(No.6) go to init positions(0, 0, 0, 0, 0, 0)!  
 
 ## 3 远程控制程序详解（BE_Sample_Control_Remote）
-***evo_be*** 为本案例所使用的函数变量所在的命名空间。
+***evo_be*** 为本案例所使用的函数变量所在的命名空间。  
 ***CBionicEyes*** 类为仿生眼的设备接口类，包含设备使用的所有方法例如控制设备的运动、获取设备数据或者设置设备运动参数。并设定一个类指针 *\*device*。*device->create( )* 的功能是创建设备实例以供连接使用。
 ```C++
 	CBionicEyes *device = device->create(enumConnect_Control);
