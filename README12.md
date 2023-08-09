@@ -21,11 +21,11 @@
 |仿生鹰眼I   |evo_be_EEDevice_*             | libevo_be_EEDevice_shared_*.so|
 |三轴平台    |evo_be_Device_ThreeAxis_*     | libevo_be_Device_ThreeAxis_shared_*.so|
 
-**注：直连PC除运行上述设备程序外，还需要在另一个终端运行 *evo_be_Device_Service_\** 用于启动仿生眼服务后，才能供远端PC检测到仿生眼系列设备的存在。**  
-***\*代表对应系统平台，例如1804代表ubuntu18.04***
+**注：直连 PC 除运行上述设备程序外，还需要在另一个终端运行 *evo_be_Device_Service_\** 用于启动仿生眼服务后，才能供远端 PC 检测到仿生眼系列设备的存在。**  
+***\*代表对应系统平台，例如 1804 代表 ubuntu18.04***
 
 ### 2.2 获取设备列表程序
-直连PC开启仿生眼服务后，***与直连PC处于同一个局域网下的***远程 *PC* 设备即可检测到仿生眼存在并进行连接，在远程 *PC* 设备中进行如下操作：
+直连 PC 开启仿生眼服务后，***与直连 PC 处于同一个局域网下的***远程 *PC* 设备即可检测到仿生眼存在并进行连接，在远程 *PC* 设备中进行如下操作：
 #### 2.2.1 进入bin目录
  `cd  path_to_workspace/BionicEyes/bin/`
  
@@ -34,7 +34,7 @@
  
 
 ## 3 BE_Sample_ThreeAxis
-***evo_be*** 为本案例所使用的函数变量所在的命名空间。
+***evo_be*** 为本案例所使用的函数变量所在的命名空间。  
 定义了一个结构体 *BeCmdOptions*，其中包含了两个参数，分别是 *bool* 类型的 *openNetworkService*，用于开启网络服务了；*int* 类型的 *dataDefaultFrameRate*，用于设置数据默认帧获取速率。
 ```C++
 	struct BeCmdOptions
