@@ -2,7 +2,7 @@
 # 远程控制程序（Remote control）使用简介
 ## 1 远程控制程序功能概括
 仿生眼系列设备的标定数据储存在配置文件中，该例程展示了如何 ***获得电动机初始位置*** 、***设定仿生眼设备的绝对位置和相对位置***。
-
+ 
 ## 2 远程控制程序使用方法
 根据 *path_to_workspace/BionicEyes/README.md* 中的流程成功编译仿生眼 *workspace* 后，所有 *sample* 程序的可执行文件保存在 *path_to_workspace/BionicEyes/bin/* 目录中，根据 *ubuntu* 操作系统的版本，程序的可执行文件被命名为：
 
