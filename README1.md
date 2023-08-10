@@ -30,28 +30,51 @@
 #### 2.2.2 运行可执行文件
  `./evo_be_Sample_Control_Remote_2004` 
 
-运行可执行文件指令后，首先先会显示将要连接的仿生眼的序号，如果当前局域网中开启仿生眼服务的设备在两台及以上，则需要进行设备的选择，例如：
->[2023-08-02 16:09:42.067] [EthernetSpec_Console] [info] EthComSpec: <<requestBeIpAddress>> Request to get be_device ip address...  
->[2023-08-02 16:09:44.582] [BE_Console] [info] BionicEyes: BionicEye device detected!!!  
->[2023-08-02 16:09:44.582] [BE_Console] [critical] BionicEyes: 0: BinoSense_BE160A28210003  192.168.31.155  
->[2023-08-02 16:09:44.582] [BE_Console] [critical] BionicEyes: 1: BinoSense_BE150A28210000  192.168.31.88  
->[2023-08-02 16:09:44.582] [BE_Console] [critical] BionicEyes: Please input the device Id(0,1...):  
+运行可执行文件指令后，首先会进行当前场景中设备的检测，**检测到多台设备时, 终端输出为：**
+```
+[2023-08-03 10:41:23.483] [EthernetSpec_Console] [info] EthComSpec: <<requestBeIpAddress>> Request to get be_device ip address...
+[2023-08-03 10:41:26.319] [BE_Console] [info] BionicEyes: BionicEye device detected!!!
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: 0: BinoSense_BE150A28210000  192.168.31.88
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: 1: BinoSense_BE150A28210010  192.168.31.35
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: Please input the device Id(0,1...):
+```
+上述终端输出中，显示了远程连接例程检测到了两台仿生眼设备, 并将设备信息进行了输出，输出格式为：
+|         输出信息            |  含义   |
+|:-------------------------:|:-------:|
+|             0/1/2...      | 可选设备编号 |
+| BinoSense_BE150A28210000  | 设备编号    |
+|        192.168.31.88      | 设备IP地址  |
 
-其中 ***"BionicEyes："*** 后面的 0 和 1 表示在当前局域网下有两台设备开启仿生眼服务且对应的序号分别为 0 和 1，后面的 192.168.31.155 和 192.168.31.88 分别为两个设备在当前局域网下对应的 IP 地址。输入 0 或者 1 则会进行设备的连接，然后跳转到后面的操作步骤。
-如果当前局域网下只有一台设备开启仿生眼服务，则默认进行连接，并自动跳转到下一步。
+根据输出的可选设备编号，以及设备编号信息，在终端输入0或1、2...即可选择想要连接的设备。
 
-选择好启动的仿生眼后，会显示左右电动机的序号以及的 *Pitch、Roll、Yaw* 的向上和向下限制位置，并且当设备回到初始化位置时输出 *go to init positions(0, 0, 0, 0, 0, 0)!* ，结果如下所示。
+例如选择0号设备，在终端中输入0即可成功连接，如下所示：
+```
+[2023-08-03 10:41:23.483] [EthernetSpec_Console] [info] EthComSpec: <<requestBeIpAddress>> Request to get be_device ip address...
+[2023-08-03 10:41:26.319] [BE_Console] [info] BionicEyes: BionicEye device detected!!!
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: 0: BinoSense_BE150A28210000  192.168.31.88
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: 1: BinoSense_BE150A28210010  192.168.31.35
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: Please input the device Id(0,1...):
+0 
+[2023-08-03 11:00:05.724] [BE_Console] [info] BionicEyes: Ready to connect be device server(Data)....
+[2023-08-03 11:00:05.726] [BE_Console] [info] BionicEyes: Ready to connect be device server(Control)...
+[2023-08-03 11:00:05.726] [BE_Console] [info] BionicEyes: Ready to get remote config file....
+[2023-08-03 11:00:05.727] [BEService_Console] [info] BEService: Request to download config file...
+[2023-08-03 11:00:05.776] [BEService_Console] [info] BEService: BionicEyes config File have got!
+```
+
+成功连接后，终端中会显示左右电动机的序号以及的 *Pitch、Roll、Yaw* 的向上和向下限制位置，并且当设备回到初始化位置时输出 *go to init positions(0, 0, 0, 0, 0, 0)!* ，结果如下所示。
 例如：
->Motor 0(up, down)(34.093128, -35.662502)  
->Motor 1(up, down)(29.773127, -30.566252)  
->Motor 2(up, down)(34.756878, -35.921253)  
->Motor 3(up, down)(35.055000, -35.893127)  
->Motor 4(up, down)(29.598751, -30.639376)  
->Motor 5(up, down)(33.114376, -34.869377)  
->[2023-08-02 10:41:12.840] [BE_Console] [info] BionicEyes: <<goInitPosition>> Motor(No.6) go to init positions(0, 0, 0, 0, 0, 0)!  
->[2023-08-02 10:41:18.841] [BE_Console] [info] BionicEyes: <<goInitPosition>> Motor(No.6) go to init positions(0, 0, 0, 0, 0, 0)!  
->[2023-08-02 10:41:24.841] [BE_Console] [info] BionicEyes: <<goInitPosition>> Motor(No.6) go to init positions(0, 0, 0, 0, 0, 0)!  
-
+```
+Motor 0(up, down)(34.093128, -35.662502)  
+Motor 1(up, down)(29.773127, -30.566252)  
+Motor 2(up, down)(34.756878, -35.921253)  
+Motor 3(up, down)(35.055000, -35.893127)  
+Motor 4(up, down)(29.598751, -30.639376)  
+Motor 5(up, down)(33.114376, -34.869377)  
+[2023-08-02 10:41:12.840] [BE_Console] [info] BionicEyes: <<goInitPosition>> Motor(No.6) go to init positions(0, 0, 0, 0, 0, 0)!  
+[2023-08-02 10:41:18.841] [BE_Console] [info] BionicEyes: <<goInitPosition>> Motor(No.6) go to init positions(0, 0, 0, 0, 0, 0)!  
+[2023-08-02 10:41:24.841] [BE_Console] [info] BionicEyes: <<goInitPosition>> Motor(No.6) go to init positions(0, 0, 0, 0, 0, 0)!  
+```
 ## 3 远程控制程序详解（BE_Sample_Control_Remote）
 ***evo_be*** 为本案例所使用的函数变量所在的命名空间。  
 ***CBionicEyes*** 类为仿生眼的设备接口类，包含设备使用的所有方法例如控制设备的运动、获取设备数据或者设置设备运动参数。并设定一个类指针 *\*device*。*device->create( )* 的功能是创建设备实例以供连接使用。
