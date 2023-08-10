@@ -1,7 +1,7 @@
 该文档里面所包含的案例仅供参考
 # 仿生眼三轴移动程序（ThreeAxis）使用简介
 ## 1 获取设备列表程序功能概括
-仿生眼系列设备的标定数据储存在配置文件中，该例程展示了如何 ***控制仿生眼设备的三轴移动***。
+仿生眼系列设备的标定数据储存在配置文件中，该例程展示了如何通过*PC*设备直连 ***控制仿生眼设备的三轴移动***。
 
 ## 2 获取设备列表程序使用方法
 根据 *path_to_workspace/BionicEyes/README.md* 中的流程成功编译仿生眼 *workspace* 后，所有 *sample* 程序的可执行文件保存在 *path_to_workspace/BionicEyes/bin/* 目录中，根据 *ubuntu* 操作系统的版本，程序的可执行文件被命名为：
@@ -10,26 +10,11 @@
 >evo_be_Sample_ThreeAxis_1804  
 >...
 
-### 2.1 开启远端服务
-远程控制例程中创建的是远程连接实例 (创建直连实例同样可以获得标定数据)，故在使用时请确保已经有一台 *PC* 直连仿生眼设备并开启了仿生眼服务。具体方法如下:
+### 2.1 开启设备
+直连控制例程中创建的是远程连接实例 (创建直连实例同样可以获得标定数据)，故在使用时请确保已经有一台 *PC* 直连仿生眼设备并开启了仿生眼服务。具体方法如下:
 
-在直连PC的 *path_to_workspace/BionicEyes/bin/* 目录下，根据对应设备不同，运行相应程序：
-|设备        |可执行文件                     | 设备依赖库    |
-|:--:       |:--:                         | :--:    |
-|仿生眼III   |evo_be_Device_*               | libevo_be_Device_shared_*.so|
-|仿生眼V     |evo_be_Device_5_*             | libevo_be_Device_5_shared_*.so|
-|仿生鹰眼I   |evo_be_EEDevice_*             | libevo_be_EEDevice_shared_*.so|
-|三轴平台    |evo_be_Device_ThreeAxis_*     | libevo_be_Device_ThreeAxis_shared_*.so|
+在直连PC的 *path_to_workspace/BionicEyes/bin/* 目录下，运行相应的可执行文件：
 
-**注：直连 PC 除运行上述设备程序外，还需要在另一个终端运行 *evo_be_Device_Service_\** 用于启动仿生眼服务后，才能供远端 PC 检测到仿生眼系列设备的存在。**  
-***\*代表对应系统平台，例如 1804 代表 ubuntu18.04***
-
-### 2.2 获取设备列表程序
-直连 PC 开启仿生眼服务后，***与直连 PC 处于同一个局域网下的***远程 *PC* 设备即可检测到仿生眼存在并进行连接，在远程 *PC* 设备中进行如下操作：
-#### 2.2.1 进入bin目录
- `cd  path_to_workspace/BionicEyes/bin/`
- 
-#### 2.2.2 运行可执行文件
  `./evo_be_Sample_ThreeAxis_2004`
  
 
