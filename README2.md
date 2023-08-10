@@ -30,12 +30,45 @@
  
 #### 2.2.2 运行可执行文件
  `./evo_be_Sample_GetDeviceList_2004`
- 
-运行可执行文件指令后，会显示左右电动机的序号以及的 *Pitch、Roll、Yaw* 的向上和向下限制位置，并且当设备回到初始化位置时输出 *go to init positions(0, 0, 0, 0, 0, 0)!* ，结果如下所示。
-例如：
->BionicEye device detected(count == 1)!!!  
->0: BinoSense_BE150A28210000 192.168.31.88  
 
+运行可执行文件指令后，首先会进行当前场景中设备的检测，**检测到多台设备时, 终端输出为：**
+```
+[2023-08-03 10:41:23.483] [EthernetSpec_Console] [info] EthComSpec: <<requestBeIpAddress>> Request to get be_device ip address...
+[2023-08-03 10:41:26.319] [BE_Console] [info] BionicEyes: BionicEye device detected!!!
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: 0: BinoSense_BE150A28210000  192.168.31.88
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: 1: BinoSense_BE150A28210010  192.168.31.35
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: Please input the device Id(0,1...):
+```
+上述终端输出中，显示了远程连接例程检测到了两台仿生眼设备, 并将设备信息进行了输出，输出格式为：
+|         输出信息            |  含义   |
+|:-------------------------:|:-------:|
+|             0/1/2...      | 可选设备编号 |
+| BinoSense_BE150A28210000  | 设备编号    |
+|        192.168.31.88      | 设备IP地址  |
+
+根据输出的可选设备编号，以及设备编号信息，在终端输入0或1、2...即可选择想要连接的设备。
+
+例如选择0号设备，在终端中输入0即可成功连接，如下所示：
+```
+[2023-08-03 10:41:23.483] [EthernetSpec_Console] [info] EthComSpec: <<requestBeIpAddress>> Request to get be_device ip address...
+[2023-08-03 10:41:26.319] [BE_Console] [info] BionicEyes: BionicEye device detected!!!
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: 0: BinoSense_BE150A28210000  192.168.31.88
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: 1: BinoSense_BE150A28210010  192.168.31.35
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: Please input the device Id(0,1...):
+0 
+[2023-08-03 11:00:05.724] [BE_Console] [info] BionicEyes: Ready to connect be device server(Data)....
+[2023-08-03 11:00:05.726] [BE_Console] [info] BionicEyes: Ready to connect be device server(Control)...
+[2023-08-03 11:00:05.726] [BE_Console] [info] BionicEyes: Ready to get remote config file....
+[2023-08-03 11:00:05.727] [BEService_Console] [info] BEService: Request to download config file...
+[2023-08-03 11:00:05.776] [BEService_Console] [info] BEService: BionicEyes config File have got!
+```
+
+成功连接后，终端中会显示左右电动机的序号以及的 *Pitch、Roll、Yaw* 的向上和向下限制位置，并且当设备回到初始化位置时输出 *go to init positions(0, 0, 0, 0, 0, 0)!* ，结果如下所示。
+例如：
+```
+BionicEye device detected(count == 1)!!!  
+0: BinoSense_BE150A28210000 192.168.31.88  
+```
 ## 3 获取设备列表程序详解（BE_Sample_GetDeviceList）
 ***evo_be*** 为本案例所使用的函数变量所在的命名空间。  
 ***CBE_Communication_Ethernet_Special*** 设定是一个用于网络通信的接口 ***API*** 的类，定义了一个类指针 *device_ipAddr_Service*，使用 *create( )* 创建一个设备服务器来设定以太网连接类型。
