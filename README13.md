@@ -31,8 +31,40 @@
  
 #### 2.2.2 运行可执行文件
  `./evo_be_Sample_VoiceProcess_2004`
- 
-运行可执行文件指令后，什么都不会显示。由于仿生眼设备不具备声卡部件，因此单独的仿生眼设备无法接收及发出声音，但是如果外接声卡等设备则可以实现代码中对声音的处理和发出声音的功能。
+
+运行可执行文件指令后，首先会进行当前场景中设备的检测，**检测到多台设备时, 终端输出为：**
+```
+[2023-08-03 10:41:23.483] [EthernetSpec_Console] [info] EthComSpec: <<requestBeIpAddress>> Request to get be_device ip address...
+[2023-08-03 10:41:26.319] [BE_Console] [info] BionicEyes: BionicEye device detected!!!
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: 0: BinoSense_BE150A28210000  192.168.31.88
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: 1: BinoSense_BE150A28210010  192.168.31.35
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: Please input the device Id(0,1...):
+```
+上述终端输出中，显示了远程连接例程检测到了两台仿生眼设备, 并将设备信息进行了输出，输出格式为：
+|         输出信息            |  含义   |
+|:-------------------------:|:-------:|
+|             0/1/2...      | 可选设备编号 |
+| BinoSense_BE150A28210000  | 设备编号    |
+|        192.168.31.88      | 设备IP地址  |
+
+根据输出的可选设备编号，以及设备编号信息，在终端输入0或1、2...即可选择想要连接的设备。
+
+例如选择0号设备，在终端中输入0即可成功连接，如下所示：
+```
+[2023-08-03 10:41:23.483] [EthernetSpec_Console] [info] EthComSpec: <<requestBeIpAddress>> Request to get be_device ip address...
+[2023-08-03 10:41:26.319] [BE_Console] [info] BionicEyes: BionicEye device detected!!!
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: 0: BinoSense_BE150A28210000  192.168.31.88
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: 1: BinoSense_BE150A28210010  192.168.31.35
+[2023-08-03 10:41:26.319] [BE_Console] [critical] BionicEyes: Please input the device Id(0,1...):
+0 
+[2023-08-03 11:00:05.724] [BE_Console] [info] BionicEyes: Ready to connect be device server(Data)....
+[2023-08-03 11:00:05.726] [BE_Console] [info] BionicEyes: Ready to connect be device server(Control)...
+[2023-08-03 11:00:05.726] [BE_Console] [info] BionicEyes: Ready to get remote config file....
+[2023-08-03 11:00:05.727] [BEService_Console] [info] BEService: Request to download config file...
+[2023-08-03 11:00:05.776] [BEService_Console] [info] BEService: BionicEyes config File have got!
+```
+
+成功连接后，终端中不会显示内容。由于仿生眼设备不具备声卡部件，因此单独的仿生眼设备无法接收及发出声音，但是如果外接声卡等设备则可以实现代码中对声音的处理和发出声音的功能。
 
 
 ## 3 BE_Sample_VoiceProcess_Remote
