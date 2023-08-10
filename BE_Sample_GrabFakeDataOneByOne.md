@@ -62,7 +62,13 @@
 [2023-08-03 11:00:05.727] [BEService_Console] [info] BEService: Request to download config file...
 [2023-08-03 11:00:05.776] [BEService_Console] [info] BEService: BionicEyes config File have got!
 ```
-成功连接后会有图像的输出。但是终端中不会有内容显示。
+成功连接后会有图像的输出，并在终端中显示当前接收到的图像的 ID 信息，但由于是远程传输且代码中设定的设备接收数据方式为逐个帧接收，所以显示的图像会较为卡顿且存在延迟。终端显示结果案例如下：
+```
+Receive new image(ID is: 46682)
+Receive new image(ID is: 46683)
+Receive new image(ID is: 46684)
+Receive new image(ID is: 46685)
+```
 
 
 ## 3 BE_Sample_GrabFakeDataOneByOne
